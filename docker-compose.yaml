@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
+---
+# docker compose up --detach
+# docker compose down
+services:
+  postgres:
+    image: postgres:18.4
+    ports: ["5432:5432"]
+    environment:
+      POSTGRES_PASSWORD: Test@12345
+      POSTGRES_USER: postgres
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:26.5
+    ports: ["8123:8123"]
+    environment:
+      CLICKHOUSE_PASSWORD: Test@12345
+      CLICKHOUSE_USER: default
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2025-CU5-ubuntu-24.04
+    ports: ["1433:1433"]
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      # Username: SA
+      SA_PASSWORD: Test@12345
+
+  mysql:
+    image: mysql:8.4.2
+    ports: ["3306:3306"]
+    environment:
+      # Username: root
+      MYSQL_ROOT_PASSWORD: Test@12345
