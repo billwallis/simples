@@ -3,13 +3,6 @@
 # docker compose up --detach
 # docker compose down
 services:
-  postgres:
-    image: postgres:18.4
-    ports: ["5432:5432"]
-    environment:
-      POSTGRES_PASSWORD: Test@12345
-      POSTGRES_USER: postgres
-
   clickhouse:
     image: clickhouse/clickhouse-server:26.5
     ports: ["8123:8123"]
@@ -32,3 +25,14 @@ services:
     environment:
       # Username: root
       MYSQL_ROOT_PASSWORD: Test@12345
+
+  postgres:
+    image: postgres:18.4
+    ports: ["5432:5432"]
+    environment:
+      POSTGRES_PASSWORD: Test@12345
+      POSTGRES_USER: postgres
+
+  snowflake:  # mock Snowflake server, not working in PyCharm yet
+    image: ghcr.io/tekumara/fakesnow:0.11.9
+    ports: ["64616:64616"]
