@@ -26,6 +26,14 @@ services:
       # Username: root
       MYSQL_ROOT_PASSWORD: Test@12345
 
+  oracle:
+    image: container-registry.oracle.com/database/free:23.26.2.0-lite
+    ports: ["1521:1521"]
+    environment:
+      # SID: FREE
+      # Username: SYSTEM
+      ORACLE_PWD: Test@12345
+
   postgres:
     image: postgres:18.4
     ports: ["5432:5432"]
@@ -36,3 +44,9 @@ services:
   snowflake:  # mock Snowflake server, not working in PyCharm yet
     image: ghcr.io/tekumara/fakesnow:0.11.9
     ports: ["64616:64616"]
+
+  trino:
+    # Username: admin
+    # Password is null
+    image: trinodb/trino:481
+    ports: ["8080:8080"]
