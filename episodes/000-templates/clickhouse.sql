@@ -1,2 +1,2 @@
-/*    ClickHouse 26.5    */
+/*    ClickHouse 26.5.1    */
 select version();

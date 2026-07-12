@@ -4,7 +4,7 @@
 # docker compose down
 services:
   clickhouse:
-    image: clickhouse/clickhouse-server:26.5
+    image: clickhouse/clickhouse-server:26.5.1
     ports: ["8123:8123"]
     environment:
       CLICKHOUSE_PASSWORD: Test@12345
