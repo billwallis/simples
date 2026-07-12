@@ -41,6 +41,18 @@ services:
       POSTGRES_PASSWORD: Test@12345
       POSTGRES_USER: postgres
 
+  # Navigate to the web console at: http://localhost:9000
+  # ...or connect with a PostgreSQL client to port 8812 using:
+  #     - username: admin
+  #     - password: quest
+  questdb:
+    image: questdb/questdb:9.4.3
+    ports:
+      - "9000:9000"  # REST API and Web Console
+      - "9009:9009"  # InfluxDB line protocol
+      - "8812:8812"  # Postgres wire protocol
+      - "9003:9003"  # Min health server
+
   snowflake:  # mock Snowflake server, not working in PyCharm yet
     image: ghcr.io/tekumara/fakesnow:0.11.9
     ports: ["64616:64616"]
