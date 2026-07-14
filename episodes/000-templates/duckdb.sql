@@ -1,2 +1,2 @@
-/*    DuckDB 1.5    */
+/*    DuckDB 1.3.1    */
 select version();

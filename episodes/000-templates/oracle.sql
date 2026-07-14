@@ -1,2 +1,2 @@
-/*    Oracle 23.26    */
+/*    Oracle 23.26.2    */
 select banner from v$version;
