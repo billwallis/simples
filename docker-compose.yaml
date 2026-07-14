@@ -45,6 +45,24 @@ services:
     image: ghcr.io/tekumara/fakesnow:0.11.9
     ports: ["64616:64616"]
 
+  # Create and format the data file before launching the server:
+  #
+  #     docker run \
+  #       --security-opt seccomp=unconfined \
+  #       --volume $(pwd)/data/tigerbeetle:/data \
+  #       ghcr.io/tigerbeetle/tigerbeetle \
+  #       format \
+  #         --replica-count=1 \
+  #         --replica=0 \
+  #         --cluster=0 \
+  #         /data/0_0.tigerbeetle
+  tigerbeetle:
+    image: ghcr.io/tigerbeetle/tigerbeetle
+    command: "start --addresses=0.0.0.0:3000 /data/0_0.tigerbeetle"
+    security_opt: ["seccomp=unconfined"]
+    ports: ["3000:3000"]
+    volumes: ["./data/tigerbeetle:/data"]
+
   trino:
     # Username: admin
     # Password is null
