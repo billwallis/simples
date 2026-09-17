@@ -3,6 +3,13 @@
 # docker compose up --detach
 # docker compose down
 services:
+  cedardb:
+    image: cedardb/cedardb:v2026-09-16
+    ports: ["5430:5432"]
+    environment:
+      # Username: postgres
+      CEDAR_PASSWORD: Test@12345
+
   clickhouse:
     image: clickhouse/clickhouse-server:26.5.1
     ports: ["8123:8123"]
